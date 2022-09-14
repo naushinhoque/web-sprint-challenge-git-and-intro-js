@@ -245,10 +245,13 @@ Use listOfNames to do the following:
 */
 
 function listOfNames(artists) {
-  /*Your Code Here*/
+  let copyOfArtists = []
+  for(let i = 0; i< artists.length; i++){
+    copyOfArtists.push(artists[i].name);
+  }
+  return copyOfArtists
 }
-
-
+console.log(listOfNames(artists));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use removeArtist to do the following:
@@ -260,7 +263,9 @@ Use removeArtist to do the following:
 🌟 EXAMPLE: if removeArtist is invoked with the artists array and the number 0, it will return the resulting array with Amedeo Modigliani removed from our dataset. */
 
 function removeArtist(artists, number) {
-  /*Your Code Here*/
+  let copyOfArtists = [...artists]; 
+  artists.splice(number, 1);
+  return artists.length;
 }
 
 
@@ -282,7 +287,16 @@ Use addArtist to do the following:
 🌟 EXAMPLE: Invoking addArtist(artists, 'John Doe', '1988-2022', 'Full Stack Development', 'African American', 'I have a background in customer service at Big Retail Chain. I am attending BloomTech to become a Frontend Developer.') should return the artists array with the above object added to the end of the array. */
 
 function addArtist(artists, name, years, genre, nationality, bio) {
-  /*Your Code Here*/
+  let copyOfArtists = [...artists];
+   const newArtist = {
+    name: 'Naushin', 
+    years: '1999- 14',
+    genre: 'Web Design',
+    nationality: 'American',
+    bio: 'lorem ipsum'   
+  }
+  copyOfArtists.push(newArtist);
+  return copyOfArtists;
 }
 
 

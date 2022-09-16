@@ -264,8 +264,8 @@ Use removeArtist to do the following:
 
 function removeArtist(artists, number) {
   let copyOfArtists = [...artists]; 
-  artists.splice(number, 1);
-  return artists.length;
+   copyOfArtists.splice(number, 1);
+  return copyOfArtists
 }
 
 
@@ -286,19 +286,20 @@ Use addArtist to do the following:
 5. Add the newly created object to the copied array, then return the copied array
 🌟 EXAMPLE: Invoking addArtist(artists, 'John Doe', '1988-2022', 'Full Stack Development', 'African American', 'I have a background in customer service at Big Retail Chain. I am attending BloomTech to become a Frontend Developer.') should return the artists array with the above object added to the end of the array. */
 
-function addArtist(artists, name, years, genre, nationality, bio) {
-  let copyOfArtists = [...artists];
+function addArtist(artistsList, name, years, genre, nationality, bio) {
+  let copyOfArtists = [...artistsList];
    const newArtist = {
-    name: 'Naushin', 
-    years: '1999- 14',
-    genre: 'Web Design',
-    nationality: 'American',
-    bio: 'lorem ipsum'   
+    name: name, 
+    years: years,
+    genre: genre,
+    nationality: nationality,
+    bio: bio,   
   }
   copyOfArtists.push(newArtist);
   return copyOfArtists;
 }
 
+console.log(addArtist(artists, 'Naushin', '1999-2022', 'Web Dev', 'American', 'I have a degree in Public Health. I am transitioning into web dev.'));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -309,10 +310,21 @@ Use lotsOfArt to do the following:
 🌟 EXAMPLE: lotsOfArt(artists) will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]
 */
 
-function lotsOfArt(artists) {
-  /*Your Code Here*/
+//input: array (artists)
+//output: array (filtered array)
+//conditions: if an artist has less than 100 paintings remove that artist from the array
+// filter method
+
+function lotsOfArt(artistsList) {
+  const lotsOfArtists = artistsList.filter(artist => artist.paintings >= 100 ); 
+  const artistsName = []
+  for (let i = 0; i< lotsOfArtists.length; i++){
+    artistsName.push(lotsOfArtists[i].name);
+  }
+  return artistsName;
 }
 
+console.log('lots of Art', lotsOfArt(artists));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 8: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -326,10 +338,12 @@ Use artistInfo to do the following:
 */
 
 function artistInfo(artists, name){
-  /*Your Code Here*/
+  const artistsBio = artists.filter(artist => artist.name === name );
+    return artistsBio[0].bio;
+  
 }
 
-
+console.log(artistInfo(artists, 'Frida Kahlo'), 'task 8');
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 9: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use artistByCountry to do the following: 
@@ -342,9 +356,15 @@ Use artistByCountry to do the following:
 */
 
 function artistByCountry(artists, nationality){
-  /*Your Code Here*/
+  const nationalityArray = artists.filter(artists => artists.nationality === nationality );
+  const arrayArtistByCountry = []
+  for(let i = 0; i< nationalityArray.length; i++){
+    arrayArtistByCountry.push(nationalityArray[i].name);
+  }
+  return arrayArtistByCountry;
 }
 
+console.log('task 9', artistByCountry(artists, 'Spanish'));
 
 
 /* ***** END OF TASKS ***** */
